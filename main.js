@@ -72,3 +72,4 @@ alert(listaProductos);
 alert(`Total de productos: ${carrito.length}`);
 alert(`Total a pagar: $ ${totalConDescuento}`);
 alert(`Descuento aplicado: $ ${descuento}`);
+alert(`Gracias por su compra`);
