@@ -1,20 +1,25 @@
-// Este código de JavaScript permite a un usuario seleccionar productos y agregarlos a un carrito de compras a través de un proceso interactivo. Luego, el usuario puede elegir el método de pago (efectivo o tarjeta) y se muestra el detalle de la compra, incluyendo el total a pagar y cualquier descuento aplicado. El programa permite al usuario realizar múltiples compras.
 
-let saludo = alert(
+// Este código de JavaScript permite a un usuario seleccionar productos y agregarlos a un carrito de compras a través de un proceso interactivo. Luego, el usuario puede elegir el método de pago (efectivo o tarjeta) y se muestra el detalle de la compra, incluyendo el total a pagar y cualquier descuento aplicado. El programa permite al usuario realizar múltiples compras.
+alert(
   "Bienvenido a la Cerrajería Online! A continuación, podrá elegir las llaves a copiar."
 );
+
+let productos = [
+  { nombre: "Llave Yale", precio: 1500 },
+  { nombre: "Llave Doble Paleta", precio: 1500 },
+  { nombre: "Llave Computada", precio: 3500 },
+  { nombre: "Llave Cruz", precio: 2000 },
+  { nombre: "Llave Auto", precio: 4500 }
+];
 
 function realizarCompra() {
   let total = 0;
 
   while (true) {
-    let opcionesProductos =
-      "Productos disponibles:\n" +
-      "1. Llave Yale - $1500\n" +
-      "2. Llave Doble Paleta - $1500\n" +
-      "3. Llave Computada - $3500\n" +
-      "4. Llave Cruz - $2000\n" +
-      "5. Llave Auto - $4500\n";
+    let opcionesProductos = "Productos disponibles:\n";
+    productos.forEach((producto, index) => {
+      opcionesProductos += `${index + 1}. ${producto.nombre} - $${producto.precio}\n`;
+    });
 
     const seleccion = prompt(
       opcionesProductos +
@@ -29,34 +34,30 @@ function realizarCompra() {
       break;
     }
 
-    let precioProducto = 0;
+    let productoSeleccionado = productos.find((producto, index) => index === seleccion - 1);
 
-    switch (seleccion) {
-      case "1":
-        precioProducto = 1500;
-        break;
-      case "2":
-        precioProducto = 1500;
-        break;
-      case "3":
-        precioProducto = 3500;
-        break;
-      case "4":
-        precioProducto = 2000;
-        break;
-      case "5":
-        precioProducto = 4500;
-        break;
-      default:
-        alert("Selección no válida. Por favor, ingrese un número válido.");
-        continue;
+    if (productoSeleccionado) {
+      total += productoSeleccionado.precio;
+      alert(`Llave seleccionada - $${productoSeleccionado.precio}.`);
+    } else {
+      alert("Selección no válida. Por favor, ingrese un número válido.");
     }
-
-    total += precioProducto;
-    alert(`Llave seleccionada - $${precioProducto}.`);
   }
 
   return total;
+}
+
+function obtenerMetodoPago() {
+  let metodoPago;
+  while (true) {
+    metodoPago = prompt("¿Desea pagar en efectivo o tarjeta?");
+    if (metodoPago.toLowerCase() === "efectivo" || metodoPago.toLowerCase() === "tarjeta") {
+      break;
+    } else {
+      alert("Ese método de pago es incorrecto. Por favor, ingrese 'efectivo' o 'tarjeta'.");
+    }
+  }
+  return metodoPago;
 }
 
 function calcularDescuento(total, metodoPago) {
@@ -70,11 +71,8 @@ function calcularDescuento(total, metodoPago) {
 }
 
 const total = realizarCompra();
-const metodoPago = prompt("¿Desea pagar en efectivo o tarjeta?");
-const { total: totalConDescuento, descuento } = calcularDescuento(
-  total,
-  metodoPago
-);
+const metodoPago = obtenerMetodoPago();
+const { total: totalConDescuento, descuento } = calcularDescuento(total, metodoPago);
 
 alert(`Total a pagar: $${totalConDescuento}`);
 alert(`Descuento aplicado: $${descuento}`);
