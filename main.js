@@ -30,9 +30,7 @@ function realizarCompra() {
   while (true) {
     let opcionesProductos = "Productos disponibles:\n";
     productos.forEach((producto, index) => {
-      opcionesProductos += `${index + 1}. ► ${producto.nombre} - $${
-        producto.precio
-      }.- .\n`;
+      opcionesProductos += `${index + 1}. ► ${producto.nombre} - $${producto.precio}.- .\n`;
     });
 
     const seleccion = prompt(
