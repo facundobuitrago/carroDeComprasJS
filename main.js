@@ -1,4 +1,3 @@
-
 // Este código de JavaScript permite a un usuario seleccionar productos y agregarlos a un carrito de compras a través de un proceso interactivo. Luego, el usuario puede elegir el método de pago (efectivo o tarjeta) y se muestra el detalle de la compra, incluyendo el total a pagar y cualquier descuento aplicado. El programa permite al usuario realizar múltiples compras.
 alert(
   "Bienvenido a la Cerrajería Online! A continuación, podrá elegir las llaves a copiar."
@@ -9,8 +8,20 @@ let productos = [
   { nombre: "Llave Doble Paleta", precio: 1500 },
   { nombre: "Llave Computada", precio: 3500 },
   { nombre: "Llave Cruz", precio: 2000 },
-  { nombre: "Llave Auto", precio: 4500 }
+  { nombre: "Llave Auto", precio: 4500 },
 ];
+
+//ARRAYS Y METODOS SOBRE ARRAY
+
+let productoEliminar = 1; 
+productos.splice(productoEliminar, 1); 
+productos.push({ nombre: "Llave Mult-lock", precio: 8500 });
+productos.push({ nombre: "Llave Caja Fuerte", precio: 6500 });
+const llavesEspeciales = 3000;
+const filtrarLlavesEspeciales = productos.filter(
+  (producto) => producto.precio > llavesEspeciales
+);
+console.log(filtrarLlavesEspeciales);
 
 function realizarCompra() {
   let total = 0;
@@ -18,7 +29,9 @@ function realizarCompra() {
   while (true) {
     let opcionesProductos = "Productos disponibles:\n";
     productos.forEach((producto, index) => {
-      opcionesProductos += `${index + 1}. ${producto.nombre} - $${producto.precio}\n`;
+      opcionesProductos += `${index + 1}. ► ${producto.nombre} - $${
+        producto.precio
+      }.- .\n`;
     });
 
     const seleccion = prompt(
@@ -34,11 +47,13 @@ function realizarCompra() {
       break;
     }
 
-    let productoSeleccionado = productos.find((producto, index) => index === seleccion - 1);
+    let productoSeleccionado = productos.find(
+      (producto, index) => index === seleccion - 1
+    );
 
     if (productoSeleccionado) {
       total += productoSeleccionado.precio;
-      alert(`Llave seleccionada - $${productoSeleccionado.precio}.`);
+      alert(`Llave seleccionada - $${productoSeleccionado.precio}.- .`);
     } else {
       alert("Selección no válida. Por favor, ingrese un número válido.");
     }
@@ -51,10 +66,14 @@ function obtenerMetodoPago() {
   let metodoPago;
   while (true) {
     metodoPago = prompt("¿Desea pagar en efectivo o tarjeta?");
-    if (metodoPago.toLowerCase() === "efectivo" || metodoPago.toLowerCase() === "tarjeta") {
+    if (
+      metodoPago.toLowerCase() === "efectivo" || metodoPago.toLowerCase() === "tarjeta"
+    ) {
       break;
     } else {
-      alert("Ese método de pago es incorrecto. Por favor, ingrese 'efectivo' o 'tarjeta'.");
+      alert(
+        "Ese método de pago es incorrecto. Por favor, ingrese 'efectivo' o 'tarjeta'."
+      );
     }
   }
   return metodoPago;
@@ -72,8 +91,8 @@ function calcularDescuento(total, metodoPago) {
 
 const total = realizarCompra();
 const metodoPago = obtenerMetodoPago();
-const { total: totalConDescuento, descuento } = calcularDescuento(total, metodoPago);
+const { total: totalConDescuento, descuento } = calcularDescuento( total, metodoPago );
 
-alert(`Total a pagar: $${totalConDescuento}`);
-alert(`Descuento aplicado: $${descuento}`);
+alert(`Total a pagar: $${totalConDescuento}.- .`);
+alert(`Descuento aplicado: $${descuento}.- .`);
 alert("Gracias por su compra");
