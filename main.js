@@ -1,4 +1,5 @@
-// Este código de JavaScript permite a un usuario seleccionar productos y agregarlos a un carrito de compras a través de un proceso interactivo. Luego, el usuario puede elegir el método de pago (efectivo o tarjeta) y se muestra el detalle de la compra, incluyendo el total a pagar y cualquier descuento aplicado. El programa permite al usuario realizar múltiples compras.
+// Este código de JavaScript permite a un usuario seleccionar productos y agregarlos a un carrito de compras a través de un proceso interactivo. Luego, el usuario puede elegir el método de pago (efectivo o tarjeta) y se muestra el detalle de la compra, incluyendo el total a pagar y cualquier descuento aplicado. El programa permite al usuario realizar múltiples compras. Se utilizaron variables, funciones, objetos, arrays, metodos de busqueda y filtrado sobre arrays. Captura de entradas de usuario mediante prompt(). Resultados de algunos datos mediante console.log() o alert().
+
 alert(
   "Bienvenido a la Cerrajería Online! A continuación, podrá elegir las llaves a copiar."
 );
