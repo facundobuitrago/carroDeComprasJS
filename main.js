@@ -3,6 +3,7 @@
 alert(
   "Bienvenido a la Cerrajería Online! A continuación, podrá elegir las llaves a copiar."
 );
+//OBJETOS 
 
 let productos = [
   { nombre: "Llave Yale", precio: 1500 },
@@ -23,6 +24,8 @@ const filtrarLlavesEspeciales = productos.filter(
   (producto) => producto.precio > llavesEspeciales
 );
 console.log(filtrarLlavesEspeciales);
+
+//LISTA DE PRODUCTOS VISTA POR EL USUARIO, use el array .forEach() para iterar sobre cada elemento de la matriz productos para agregarle un indice y asi facilitarle al usuario la elección.
 
 function realizarCompra() {
   let total = 0;
