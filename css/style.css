@@ -1,0 +1,83 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+#productos {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.producto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#carrito {
+    flex: 1;
+}
+
+#carrito-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+#carrito-tabla th, #carrito-tabla td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+tr {
+    align-items: center;
+text-align: center;
+}
+
+#total {
+    font-weight: bold;
+    display: flex;
+    align-content: center;
+    text-align: center;
+}
+
+p {
+  
+    text-align: center;
+}
+
+#metodo-pago {
+    margin-right: 10px;
+}
+
+#boton-pagar {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#boton-pagar:hover {
+    background-color: #45a049;
+}
