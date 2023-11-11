@@ -1,13 +1,13 @@
 
 let productos = [
-  { nombre: "Llave Yale", precio: 1500, imagen: "img/llaveYale.jpg" },
-  { nombre: "Llave Doble Paleta", precio: 1500, imagen: "img/doblePaleta.jpg" },
-  { nombre: "Llave Computada", precio: 3500, imagen: "img/llaveComputada.jpg" },
-  { nombre: "Llave Cruz", precio: 2000, imagen: "img/llaveCruz.jpg" },
-  { nombre: "Llave Auto", precio: 4500, imagen: "img/llaveAuto.jpg" },
+  { nombre: "Sony PlayStation 3 Super Slim 500GB Standard color charcoal black", precio: 110500, imagen: "img/consola_001.jpg" }, 
+  { nombre: "Microsoft Xbox 360 Arcade 512MB Standard color matte white", precio: 200200, imagen: "img/consola_002.jpg" },
+  { nombre: "Ps2 Slim Matrix 32gb 2 Joystick", precio: 103500, imagen: "img/consola_003.jpg" },
+  { nombre: "Microsoft Xbox Series S 512GB Standard color blanco", precio: 122000, imagen: "img/consola_004.jpg" },
+  { nombre: "Consola Kanji KJ-PSPX6 color negro", precio: 44500, imagen: "img/consola_005.jpg" },
 ];
 document.addEventListener('DOMContentLoaded', function () {
-  // Muestra el carrito al cargar la página
+  // Muestra el carrito cuando carga
   mostrarCarrito();
 })
 
@@ -17,7 +17,7 @@ document.body.appendChild(carritoElemento);
 let totalElemento = document.createElement('p');
 document.body.appendChild(totalElemento);
 
-// Crear un botón para pagar
+// Crear boton de pagar
 let botonPagar = document.getElementById('boton-pagar');
 botonPagar.addEventListener('click', () => {
   let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -34,7 +34,7 @@ botonPagar.addEventListener('click', () => {
   
     Swal.fire({
       title: "Gracias por su compra!",
-      text: "Cerrajeria",
+      text: "Galaxy Games",
       icon: "success"
       
     });
@@ -52,12 +52,11 @@ function agregarAlCarrito(producto) {
 
   mostrarCarrito();
 }
-
 function mostrarCarrito() {
   // Obtener el carrito actual de localStorage
   let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-  // Limpiar el carrito actual
+  // Vaciar el carrito actual
   carritoElemento.textContent = '';
 
   // Crear una fila de tabla para cada producto en el carrito
@@ -69,7 +68,7 @@ function mostrarCarrito() {
     fila.appendChild(celdaNombre);
 
     let celdaPrecio = document.createElement('td');
-    celdaPrecio.textContent = producto.precio;
+    celdaPrecio.textContent = `$${producto.precio}`;
     fila.appendChild(celdaPrecio);
 
     let celdaEliminar = document.createElement('td');
