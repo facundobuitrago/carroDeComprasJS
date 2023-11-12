@@ -59,7 +59,7 @@ botonPagar.addEventListener("click", () => {
     let metodoPago = document.getElementById("metodo-pago").value;
 
     if (metodoPago === "efectivo") {
-      let descuento = total * 0.2;
+      let descuento = parseInt(total * 0.2);
       total *= 0.8;
 
       Swal.fire({
