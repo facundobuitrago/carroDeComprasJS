@@ -88,11 +88,13 @@ th {
 }
 
 button {
-  background-color: #dc3545;
-  color: white;
+  background-color: #35dc4b;
+  color: rgb(7, 7, 7);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   border: none;
   padding: 8px 12px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 button:hover {

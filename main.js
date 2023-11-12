@@ -1,3 +1,4 @@
+
 let productos = [
   {
     nombre: "Sony PlayStation 3 Super Slim 500GB Standard color charcoal black",
@@ -50,29 +51,58 @@ botonPagar.addEventListener("click", () => {
   if (carrito.length === 0) {
     Swal.fire({
       icon: "error",
-      title: "El carrito esta vacío",
+      title: "El carrito está vacío",
       text: "Por favor selecciona el producto deseado",
     });
   } else {
     let total = carrito.reduce((sum, producto) => sum + producto.precio, 0);
-    if (document.getElementById("metodo-pago").value === "efectivo") {
+    let metodoPago = document.getElementById("metodo-pago").value;
+
+    if (metodoPago === "efectivo") {
+      let descuento = total * 0.2;
       total *= 0.8;
-      alert("Se ha aplicado un descuento del 20%.");
-    }
-    Swal.fire({
-      title: "Finalizar",
-      text: `Total a pagar: $${total}`,
-      icon: "success",
-    }).then(() => {
+
       Swal.fire({
-        title: "Gracias por su compra!",
-        text: "Galaxy Games",
+        title: "Descuento Aplicado",
+        text: `Se ha aplicado un descuento de 20%. El total ahora es: $${total}`,
         icon: "success",
+        confirmButtonText: "Aceptar",
+      }).then(() => {
+        mostrarResumenCompra(total);
       });
-      localStorage.removeItem("carrito");
-    });
+    } else if (metodoPago === "tarjeta") {
+  
+      Swal.fire({
+        title: "Pago con Tarjeta",
+        text: "Redirigiendo a la pasarela de pago...",
+        icon: "info",
+        confirmButtonText: "Aceptar",
+      }).then(() => {
+  
+        mostrarResumenCompra(total);
+      });
+    }
   }
 });
+
+function mostrarResumenCompra(total) {
+  Swal.fire({
+    title: "Finalizar",
+    text: `Total a pagar: $${total}`,
+    icon: "success",
+    confirmButtonText: "Aceptar",
+  }).then(() => {
+    Swal.fire({
+      title: "Gracias por su compra!",
+      text: "Galaxy Games",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
+    localStorage.removeItem("carrito");
+    mostrarCarrito(); 
+  });
+}
+
 
 function agregarAlCarrito(producto) {
   // Obtener el carrito actual de localStorage
