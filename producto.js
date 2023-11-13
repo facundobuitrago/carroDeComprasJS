@@ -1,14 +1,14 @@
 productos.forEach((producto, index) => {
   let tarjeta = document.createElement('div');
   tarjeta.className = 'card';
-  tarjeta.style.width = '18rem'; // Ajuste al ancho original de la tarjeta
+  tarjeta.style.width = '18rem'; 
 
   let imagen = document.createElement('img');
   imagen.className = 'card-img-top';
   imagen.alt = producto.nombre;
   imagen.src = producto.imagen || '...';
-  imagen.style.height = '230px'; // Mantenemos la altura del estilo original
-  imagen.style.objectFit = 'contain'; // Estilo original
+  imagen.style.height = '230px'; 
+  imagen.style.objectFit = 'contain'; 
 
   tarjeta.appendChild(imagen);
 
@@ -22,7 +22,7 @@ productos.forEach((producto, index) => {
 
   let texto = document.createElement('p');
   texto.className = 'card-text';
-  texto.innerText = 'Llega gratis mañana'; // Texto del estilo original
+  texto.innerText = 'Llega gratis mañana'; 
   cuerpoTarjeta.appendChild(texto);
 
   let lista = document.createElement('ul');

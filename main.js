@@ -45,6 +45,7 @@ let totalElemento = document.createElement("p");
 document.body.appendChild(totalElemento);
 
 // Crear boton de pagar
+
 let botonPagar = document.getElementById("boton-pagar");
 botonPagar.addEventListener("click", () => {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -68,7 +69,7 @@ botonPagar.addEventListener("click", () => {
         icon: "success",
         confirmButtonText: "Aceptar",
       }).then(() => {
-        mostrarResumenCompra(total);
+        mostrarResumenCompra(parseInt(total));
       });
     } else if (metodoPago === "tarjeta") {
   
@@ -79,7 +80,7 @@ botonPagar.addEventListener("click", () => {
         confirmButtonText: "Aceptar",
       }).then(() => {
   
-        mostrarResumenCompra(total);
+        mostrarResumenCompra(parseInt(total));
       });
     }
   }
@@ -88,7 +89,7 @@ botonPagar.addEventListener("click", () => {
 function mostrarResumenCompra(total) {
   Swal.fire({
     title: "Finalizar",
-    text: `Total a pagar: $${total}`,
+    text: `Total a pagar: $${parseInt(total)}`,
     icon: "success",
     confirmButtonText: "Aceptar",
   }).then(() => {
@@ -117,9 +118,6 @@ function agregarAlCarrito(producto) {
 function mostrarCarrito() {
   // Obtener el carrito actual de localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  // Vaciar el carrito actual
-  carritoElemento.textContent = "";
 
   // Crear una fila de tabla para cada producto en el carrito
   carrito.forEach((producto, index) => {
