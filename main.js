@@ -116,7 +116,7 @@ function agregarAlCarrito(producto) {
   mostrarCarrito();
 }
 function mostrarCarrito() {
-  // Obtener el carrito actual de localStorage
+  // Obtener el carrito actual de localStorage //
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
   // Crear una fila de tabla para cada producto en el carrito

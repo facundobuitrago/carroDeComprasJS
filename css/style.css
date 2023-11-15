@@ -20,6 +20,16 @@ main {
   align-items: center;
 }
 
+h3 {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(144, 146, 236);
+  border-radius: 10px;
+  margin: 20px;
+  text-align: center;
+}
+
 .productosFlex {
   margin-bottom: 20px;
 }
