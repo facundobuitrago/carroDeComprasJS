@@ -1,4 +1,6 @@
 # javascriptBuitragoResumen del Código:
+Carrito de compras basico. 
+
 HTML (index.html):
 
 Estructura básica de la página con Bootstrap.
