@@ -22,16 +22,14 @@ main {
 
 h3 {
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 30px;
+  font-size: 35px;
   color: rgb(0, 0, 0);
-  background-color: rgb(144, 146, 236);
-  border-radius: 10px;
   margin: 20px;
   text-align: center;
 }
 
 .productosFlex {
-  margin-bottom: 20px;
+  margin-bottom: 0, auto;
 }
 
 .carrito-container {
@@ -43,7 +41,7 @@ h3 {
 #productos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5px;
 }
 
@@ -112,7 +110,7 @@ button:hover {
 }
 
 p {
-  font-size: 18px;
+  font-size: 25px;
   margin-top: 10px;
 }
 p {
@@ -152,8 +150,10 @@ p {
   object-fit: contain;
 }
 
-.card .card-body a {
+.card .card-body {
   text-decoration: none;
+  display: grid;
+  align-items: end;
 }
 
 .card .card-text {
@@ -171,6 +171,7 @@ p {
 @media screen and (max-width: 450px) {
   .card {
     width: 100%;
+  
   }
 }
 

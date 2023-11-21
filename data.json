@@ -28,5 +28,13 @@
       "nombre": "Consola Kanji KJ-PSPX6 color negro",
       "precio": 44500,
       "imagen": "img/consola_005.jpg"
+    },
+    {
+        "id": 6,
+      "nombre": "Family Game",
+      "precio": 5000,
+      "imagen": "img/consola_006.jpg"
     }
+
+
   ]
