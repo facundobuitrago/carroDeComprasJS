@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+      "nombre": "Sony PlayStation 3 Super Slim 500GB Standard color charcoal black",
+      "precio": 110500,
+      "imagen": "img/consola_001.jpg"
+    },
+    {
+        "id": 2,
+      "nombre": "Microsoft Xbox 360 Arcade 512MB Standard color matte white",
+      "precio": 200200,
+      "imagen": "img/consola_002.jpg"
+    },
+    {
+        "id": 3,
+      "nombre": "Ps2 Slim Matrix 32gb 2 Joystick",
+      "precio": 103500,
+      "imagen": "img/consola_003.jpg"
+    },
+    {
+        "id": 4,
+      "nombre": "Microsoft Xbox Series S 512GB Standard color blanco",
+      "precio": 122000,
+      "imagen": "img/consola_004.jpg"
+    },
+    {
+        "id": 5,
+      "nombre": "Consola Kanji KJ-PSPX6 color negro",
+      "precio": 44500,
+      "imagen": "img/consola_005.jpg"
+    }
+  ]

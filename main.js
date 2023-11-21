@@ -1,41 +1,6 @@
-
-let productos = [
-  {
-    nombre: "Sony PlayStation 3 Super Slim 500GB Standard color charcoal black",
-    precio: 110500,
-    imagen: "img/consola_001.jpg",
-  },
-  {
-    nombre: "Microsoft Xbox 360 Arcade 512MB Standard color matte white",
-    precio: 200200,
-    imagen: "img/consola_002.jpg",
-  },
-  {
-    nombre: "Ps2 Slim Matrix 32gb 2 Joystick",
-    precio: 103500,
-    imagen: "img/consola_003.jpg",
-  },
-  {
-    nombre: "Microsoft Xbox Series S 512GB Standard color blanco",
-    precio: 122000,
-    imagen: "img/consola_004.jpg",
-  },
-  {
-    nombre: "Consola Kanji KJ-PSPX6 color negro",
-    precio: 44500,
-    imagen: "img/consola_005.jpg",
-  },
-];
-
-productos.push({
-  nombre: "Nintendo Switch Platinum 128gb Limited Edition",
-  precio: 255267,
-  imagen: "img/consola_009.jpg",
-});
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Muestra el carrito cuando carga
-  mostrarCarrito();
+  cargarProductos();
+  mostrarCarrito(); // Muestra el carrito cuando carga
 });
 
 let carritoElemento = document.createElement("table");
@@ -43,6 +8,16 @@ document.body.appendChild(carritoElemento);
 
 let totalElemento = document.createElement("p");
 document.body.appendChild(totalElemento);
+
+async function cargarProductos() {
+  try {
+    const response = await fetch("./data.json");
+    const productos = await response.json();
+    mostrarProductos(productos);
+  } catch (error) {
+    console.error("Error al cargar los productos:", error);
+  }
+}
 
 // Crear boton de pagar
 
@@ -72,14 +47,12 @@ botonPagar.addEventListener("click", () => {
         mostrarResumenCompra(parseInt(total));
       });
     } else if (metodoPago === "tarjeta") {
-  
       Swal.fire({
         title: "Pago con Tarjeta",
         text: "Redirigiendo a la pasarela de pago...",
         icon: "info",
         confirmButtonText: "Aceptar",
       }).then(() => {
-  
         mostrarResumenCompra(parseInt(total));
       });
     }
@@ -100,26 +73,38 @@ function mostrarResumenCompra(total) {
       confirmButtonText: "Aceptar",
     });
     localStorage.removeItem("carrito");
-    mostrarCarrito(); 
+    mostrarCarrito();
   });
 }
-
 
 function agregarAlCarrito(producto) {
   // Obtener el carrito actual de localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  carrito.push(producto);
+  // Verificar si el producto ya está en el carrito
+  const productoExistenteIndex = carrito.findIndex((p) => p.id === producto.id);
 
+  if (productoExistenteIndex !== -1) {
+    // Si el producto ya está en el carrito, incrementar la cantidad
+    carrito[productoExistenteIndex].cantidad += 1;
+  } else {
+    // Si el producto no está en el carrito, agregarlo con cantidad 1
+    producto.cantidad = 1;
+    carrito.push(producto);
+  }
+
+  // Actualizar el carrito en localStorage
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
+  // Mostrar el carrito actualizado
   mostrarCarrito();
 }
-function mostrarCarrito() {
-  // Obtener el carrito actual de localStorage //
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Crear una fila de tabla para cada producto en el carrito
+function mostrarCarrito() {
+  // Obtener el carrito actual de localStorage
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carritoElemento.innerHTML = "";
+
   carrito.forEach((producto, index) => {
     let fila = document.createElement("tr");
 
@@ -128,7 +113,7 @@ function mostrarCarrito() {
     fila.appendChild(celdaNombre);
 
     let celdaPrecio = document.createElement("td");
-    celdaPrecio.textContent = `$${producto.precio}`;
+    celdaPrecio.textContent = `$${producto.precio} x ${producto.cantidad}`;
     fila.appendChild(celdaPrecio);
 
     let celdaEliminar = document.createElement("td");
@@ -143,13 +128,20 @@ function mostrarCarrito() {
     carritoElemento.appendChild(fila);
   });
 
-  let total = carrito.reduce((sum, producto) => sum + producto.precio, 0);
+  let total = carrito.reduce((sum, producto) => sum + producto.precio * producto.cantidad, 0);
   totalElemento.textContent = `Total: $${total}`;
 }
 
 function eliminarDelCarrito(index) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  carrito.splice(index, 1);
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  mostrarCarrito();
+
+  if (index >= 0 && index < carrito.length) {
+    carrito.splice(index, 1);
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    mostrarCarrito();
+  } else {
+    console.error("Índice de carrito fuera de rango");
+  }
 }

@@ -1,3 +1,6 @@
+
+
+function mostrarProductos(productos){
 productos.forEach((producto, index) => {
   let tarjeta = document.createElement('div');
   tarjeta.className = 'card';
@@ -55,3 +58,4 @@ productos.forEach((producto, index) => {
   
   document.getElementById('productos').appendChild(tarjeta);
 });
+}
