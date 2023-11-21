@@ -128,7 +128,10 @@ function mostrarCarrito() {
     carritoElemento.appendChild(fila);
   });
 
-  let total = carrito.reduce((sum, producto) => sum + producto.precio * producto.cantidad, 0);
+  let total = carrito.reduce(
+    (sum, producto) => sum + producto.precio * producto.cantidad,
+    0
+  );
   totalElemento.textContent = `Total: $${total}`;
 }
 
