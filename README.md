@@ -1,0 +1,27 @@
+# javascriptBuitragoResumen del Código:
+Carrito de compras basico. 
+
+HTML (index.html):
+
+Estructura básica de la página con Bootstrap.
+Elementos como encabezado, secciones para productos y carrito, y algunos controles de interfaz.
+JavaScript (main.js):
+
+Carga el contenido de data.json de manera asíncrona al cargar la página.
+Inicializa el carrito y la interfaz al cargar el DOM.
+Gestiona la lógica del carrito, como el manejo de descuentos y el proceso de pago.
+Utiliza SweetAlert2 para mensajes interactivos al usuario.
+JavaScript (producto.js):
+
+Genera tarjetas de productos y las muestra en la sección de productos.
+Define la función agregarAlCarrito para añadir productos al carrito y muestra el carrito actualizado.
+Implementa la función mostrarCarrito para mostrar los productos en el carrito.
+Define la función eliminarDelCarrito para eliminar productos del carrito.
+JSON (data.json):
+
+Contiene información detallada sobre productos como id, nombre, precio e imagen.
+Comentarios Adicionales:
+En main.js, la línea const productos = await response.json(); obtiene los productos del JSON después de cargarlo de forma asíncrona.
+En producto.js, la función agregarAlCarrito verifica si un producto ya está en el carrito antes de agregarlo.
+En producto.js, la función mostrarCarrito limpia la tabla del carrito antes de volver a llenarla, evitando duplicaciones visuales.
+En producto.js, la función eliminarDelCarrito elimina el producto del carrito según el índice especificado.
