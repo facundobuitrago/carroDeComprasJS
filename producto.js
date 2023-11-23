@@ -1,4 +1,4 @@
-
+// Tarjeta productos de Bootstrap modificada
 
 function mostrarProductos(productos){
 productos.forEach((producto, index) => {

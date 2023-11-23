@@ -78,17 +78,13 @@ function mostrarResumenCompra(total) {
 }
 
 function agregarAlCarrito(producto) {
-  // Obtener el carrito actual de localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Verificar si el producto ya está en el carrito
   const productoExistenteIndex = carrito.findIndex((p) => p.id === producto.id);
 
   if (productoExistenteIndex !== -1) {
-    // Si el producto ya está en el carrito, incrementar la cantidad
     carrito[productoExistenteIndex].cantidad += 1;
   } else {
-    // Si el producto no está en el carrito, agregarlo con cantidad 1
     producto.cantidad = 1;
     carrito.push(producto);
   }
