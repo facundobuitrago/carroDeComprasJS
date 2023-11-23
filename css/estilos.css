@@ -121,10 +121,9 @@ p {
   margin-right: 10px;
 }
 
-.button boton-pagar {
+.button .boton-pagar {
   background-color: #4caf50;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: white;
   padding: 10px;
   border: none;
@@ -178,6 +177,7 @@ p {
 
 footer {
   background-image: url(/img/fondo.png);
+  padding: 5px;
 }
 
 footer .logo {
@@ -189,25 +189,4 @@ footer .footer-container {
   font-size: 15px;
   padding-left: 10%;
   font-family: "Inter", sans-serif;
-}
-footer .footer-container .iconos {
-  padding-right: 10%;
-}
-footer .footer-container .iconos a {
-  padding: 2%;
-  -webkit-transition: 0.5s linear;
-  transition: 0.5s linear;
-}
-footer .footer-container .iconos a:hover {
-  -webkit-transform: scale(0.6);
-  transform: scale(0.6);
-}
-footer p {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  color: #ffffff;
-  margin-bottom: 0%;
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
 }
