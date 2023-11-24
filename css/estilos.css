@@ -175,11 +175,6 @@ p {
 
 /** FOOTER **/
 
-footer {
-  background-image: url(/img/fondo.png);
-  padding: 5px;
-}
-
 footer .logo {
   width: 300px;
   margin: 0% auto;
