@@ -39,11 +39,13 @@ botonPagar.addEventListener("click", () => {
 
       total *= 0.8;
 
+
       carrito.forEach(producto => {
         producto.precio -= parseInt(descuento / producto.cantidad);
       });
 
       total -= descuento;
+      
 
       Swal.fire({
         title: "Descuento Aplicado",
