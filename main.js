@@ -31,12 +31,19 @@ botonPagar.addEventListener("click", () => {
       text: "Por favor selecciona el producto deseado",
     });
   } else {
-    let total = carrito.reduce((sum, producto) => sum + producto.precio, 0);
+    let total = carrito.reduce((sum, producto) => sum + producto.precio * producto.cantidad, 0);
     let metodoPago = document.getElementById("metodo-pago").value;
 
     if (metodoPago === "efectivo") {
       let descuento = parseInt(total * 0.2);
+
       total *= 0.8;
+
+      carrito.forEach(producto => {
+        producto.precio -= parseInt(descuento / producto.cantidad);
+      });
+
+      total -= descuento;
 
       Swal.fire({
         title: "Descuento Aplicado",
@@ -46,6 +53,8 @@ botonPagar.addEventListener("click", () => {
       }).then(() => {
         mostrarResumenCompra(parseInt(total));
       });
+      
+      
     } else if (metodoPago === "tarjeta") {
       Swal.fire({
         title: "Pago con Tarjeta",
@@ -53,7 +62,7 @@ botonPagar.addEventListener("click", () => {
         icon: "info",
         confirmButtonText: "Aceptar",
       }).then(() => {
-        mostrarResumenCompra(parseInt(total));
+        mostrarResumenCompra(parseInt({total}));
       });
     }
   }
@@ -83,7 +92,7 @@ function agregarAlCarrito(producto) {
   const productoExistenteIndex = carrito.findIndex((p) => p.id === producto.id);
 
   if (productoExistenteIndex !== -1) {
-    carrito[productoExistenteIndex].cantidad += 1;
+    carrito[productoExistenteIndex].cantidad += +1;
   } else {
     producto.cantidad = 1;
     carrito.push(producto);
